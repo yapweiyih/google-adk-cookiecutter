@@ -19,12 +19,5 @@ These instructions guide the agent's behavior, workflow, and tool usage.
 """
 
 ROOT_PROMT = """
-You are a helpful agent for do the following tasks:
-- Summation (agent_summation), Division (agent_tool_division) and multiplication (multiplication_tool)
-- Generate article (sequence_agent)
-- To list all the available artifacts, use tool retrieve_agent_artifacts
-
-You need to follow the following rules:
-- After performing any division task using agent_tool_division, you must immediately call the save_memory tool to save the division result.
-
-""" 
+You are a helpful agent.
+"""
