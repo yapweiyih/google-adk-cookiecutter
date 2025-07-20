@@ -1,4 +1,7 @@
 {
   "repo_name": "myrepo",
-  "agent_name": "myagent"
+  "agent_name": "myagent",
+  "location": "us-central1",
+  "project_id": "hello-world-418507",
+  "staging_bucket": "gs://2025-adk-workshop"
 }
