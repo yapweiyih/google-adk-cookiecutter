@@ -42,7 +42,7 @@ async def multiplication_tool(num: int):
 
 
 agent_division = Agent(
-    model="gemini-2.0-flash-001",
+    model="gemini-2.5-flash",
     name="agent_division",
     instruction="An agent that perform division",
     # code_executor=VertexAiCodeExecutor(
@@ -108,4 +108,4 @@ root_agent = Agent(
     after_agent_callback=after_agent_callback,
     before_agent_callback=before_agent_callback,  # Using callback
     generate_content_config=types.GenerateContentConfig(temperature=0.01),
-) 
+)

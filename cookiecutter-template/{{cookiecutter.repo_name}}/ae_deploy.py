@@ -1,3 +1,4 @@
+import argparse
 import asyncio
 import json
 import logging
@@ -171,13 +172,26 @@ def test_on_cloud(engine_id):
 
 
 def main():
+    parser = argparse.ArgumentParser(description="Deploy and test Vertex AI agent.")
+    parser.add_argument(
+        "--engine_id",
+        type=str,
+        default=None,
+        help="Existing ENGINE_ID to test on cloud. If not provided, deploys a new agent and skips cloud test.",
+    )
+    args = parser.parse_args()
+
     try:
-        set_env_and_logging()
-        init_vertexai()
-        asyncio.run(local_test())
-        engine_id = deploy_agent()
-        test_on_cloud(engine_id)
-        print(f"\nAll {len(STEPS)}/{len(STEPS)} steps completed successfully.")
+        engine_id = args.engine_id
+        if engine_id is None:
+            set_env_and_logging()
+            init_vertexai()
+            asyncio.run(local_test())
+            engine_id = deploy_agent()
+        else:
+            print("Running test_on_cloud.")
+            test_on_cloud(engine_id)
+
     except Exception as e:
         print(f"\nError: {e}")
         print("Aborting further steps.")
